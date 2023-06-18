@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./App.css";
 
-const API_KEY = "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";
+const API_KEY = "";
 const systemMessage = {
   role: "system",
   content:
