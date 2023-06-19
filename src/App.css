@@ -1,38 +1,54 @@
-html,
-body {
-  height: 100%;
-  overflow: auto;
-  font-family: sans-serif;
+/* Add these CSS styles */
+@media (max-width: 500px) {
+  .chatbot {
+    width: 72%;
+    height: 75%;
+    border-radius: 0;
+    /* transform: translateY(0); */
+    justify-content: center;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    margin: auto;
+    
+  }
+
+  .chatbot.expanded {
+    height: 100%;
+  }
+
+  .chatbot .messages .message.chatgpt,
+  .chatbot .messages .message.user {
+    width: 40%;
+  }
+
+  .chatbot .input {
+    height: 50px;
+  }
+
+  .chatbot .input.expanded {
+    height: 180px;
+  }
+
+  .App-header {
+    padding: 0;
+    text-align: center;
+  }
+
 }
+
+/* Other existing styles */
 
 .App {
   text-align: left;
+  height: 100%;
 }
 
-/* Add these CSS styles */
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-.chatbot .loading-animation {
-  width: 20px;
-  height: 20px;
-  border: 3px solid rgba(0, 0, 0, 0.3);
-  border-top-color: #001122;
-  border-radius: 50%;
-  animation: spin 1s infinite linear;
-  margin-right: 10px;
-  /* Space out */
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-  
+body {
+  height: 100%;
+  overflow: hidden;
+  font-family: sans-serif;
 }
 
 .App-header {
@@ -45,7 +61,47 @@ body {
   color: #001122;
   font-family: sans-serif;
   overflow: auto;
+  padding: 10px;
 }
+
+.api-key-dialog {
+  position: fixed;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.api-key-dialog h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.api-key-dialog input {
+  width: 300px;
+  padding: 8px;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.api-key-dialog .submit-button {
+  background-color: #001122;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.api-key-dialog .submit-button:hover {
+  background-color: #003366;
+}
+
 
 .chatbot {
   position: fixed;
@@ -58,11 +114,42 @@ body {
   overflow: hidden;
   border: 2px solid #001122;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease;
+  /* transition: transform 0.3s ease; */
   overflow: auto;
   /* Always scroll down */
   display: flex;
   flex-direction: column;
+}
+
+.loading-indicator {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.auth-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.sign-in-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4285f4;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 .chatbot.expanded {
@@ -99,8 +186,8 @@ body {
   color: white;
   text-align: left;
   align-self: flex-end;
-  width: 60%;
-  margin-left: 36%;
+  width: 50%;
+  margin-left: 47%;
 }
 
 .chatbot .input {
@@ -136,4 +223,9 @@ body {
   margin-left: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   transition: background-color 0.3s ease;
+}
+
+.error-message {
+  color: #001122;
+  margin-top: 20px;
 }

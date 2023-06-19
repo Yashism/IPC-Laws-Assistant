@@ -1,0 +1,54 @@
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.login-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.google-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border: 1px solid white;
+    border-radius: 4px;
+    padding: 8px 12px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.google-button:hover {
+    background-color: white;
+}
+
+@media (max-width: 480px) {
+    .login-title {
+        font-size: 20px;
+    }
+}
+
+.google-signin-button {
+    cursor: pointer;
+    border: none;
+    background-color: white;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(14px + 2vmin);
+    color: #001122;
+    font-family: sans-serif;
+    overflow: auto;
+    margin-top: -80px;
+}
