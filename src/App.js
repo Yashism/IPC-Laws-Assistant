@@ -4,6 +4,8 @@ import "./App.css";
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import Login from "./Login";
+import PdfFileIcon from "./PdfFileIcon";
+
 
 function App() {
   const [isExpanded] = useState(false);
@@ -13,6 +15,7 @@ function App() {
   const [isLoading3, setIsLoading3] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [userInput, setUserInput] = useState("");
+
   const [messages, setMessages] = useState([
     {
       message:
@@ -212,6 +215,35 @@ function App() {
     );
   }
 
+  const handlePDFUpload = (file) => {
+    // Perform necessary actions with the uploaded PDF file
+    // For example, show a loading message and start analyzing the PDF text
+    const newMessage = {
+      message: `Uploading PDF: ${file.name}`,
+      sender: "user",
+    };
+    const newMessages = [...messages, newMessage];
+    setMessages(newMessages);
+
+    setIsTyping(true);
+    analyzePDF(file);
+  };
+
+  const analyzePDF = async (file) => {
+    // Simulate analysis process by waiting for a few seconds
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+
+    // After analysis, display the result as a PDF icon with the name
+    const newMessage = {
+      message: `PDF analyzed: ${file.name}`,
+      sender: "ChatGPT",
+    };
+    const newMessages = [...messages, newMessage];
+    setMessages(newMessages);
+
+    setIsTyping(false);
+  };
+
   if (!user) {
     return <Login />;
   }
@@ -276,6 +308,22 @@ function App() {
         </div>
         <div className={`input ${isExpanded ? "expanded" : ""}`}>
           {renderInput()}
+          <div className="upload-pdf-icon">
+            <input
+              type="file"
+              id="upload-pdf"
+              accept=".pdf"
+              onChange={(event) => {
+                const file = event.target.files[0];
+                if (file) {
+                  handlePDFUpload(file);
+                }
+              }}
+            />
+            <label htmlFor="upload-pdf">
+              <PdfFileIcon />
+            </label>
+          </div>
           <button
             className="submit-button"
             onClick={handleSend}

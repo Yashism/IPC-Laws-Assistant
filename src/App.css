@@ -102,6 +102,23 @@ body {
   background-color: #003366;
 }
 
+.upload-pdf-icon {
+  display: flex;
+  align-items: center;
+}
+
+.upload-pdf-icon input[type="file"] {
+  display: none;
+}
+
+.pdf-icon {
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  margin: 7px;
+  margin-left: 15px;
+  margin-top: 10px;
+}
 
 .chatbot {
   position: fixed;
@@ -216,6 +233,7 @@ body {
 .chatbot .submit-button {
   padding: 10px;
   border: none;
+  display: inline-block;
   background-color: #001122;
   color: white;
   cursor: pointer;
